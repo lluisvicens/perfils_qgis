@@ -60,12 +60,46 @@ A continuació, es mostra un flux de treball bàsic per obtenir un perfil.
 En el cas que es necessiti generar un perfil topogràfic que ressegueixi, per exemple, el traçat d'una carretera, camí o recorregut, i que per tant no és especialment rectilini, fet que implicaria dur a terme un procés de pseudo-digitalització si s'utilitzen els complements anteriors, QGIS disposa de **Terrain Profile**. A continuació, es mostra un flux de treball bàsic per obtenir un perfil. 
 
 * En activar aquesta eina, apareixerà un nou panell en el qual caldrà indicar dins l'apartat *Add layer*, quina és la capa relativa al model digital d'elevacions. Per a fer-ho cal, activar la capa en qüestió al panell de capes, i fer clic sobre el botó *Add layer*.
-* A continuació, cal activar al panell de capes de QGIS, la capa de línia que representa el traçat, la forma de la qual, se'n vol obtenir el perfil topogràfic. Una vegada activa la capa al panell, dins l'apartat *Options* del panell de l'eina, al paràmetre Selection caldrà modificar el valor que es mostra per defecte, per **Selected layer**. Automàticament es genera un perfil que es pot desar en format d'imatge (.png).
+* A continuació, cal activar al panell de capes de QGIS, la capa de línia que representa el traçat, la forma de la qual, se'n vol obtenir el perfil topogràfic. Una vegada activa la capa al panell, dins l'apartat *Options* del panell de l'eina, al paràmetre *Selection* caldrà modificar el valor que es mostra per defecte, per **Selected layer**. Automàticament es genera un perfil que es pot desar en format d'imatge (.png).
 
 ![image](/imatges/p8.png)
 
 ## 2. Incorporar els perfils obtibnguts amb els complements anteriors.
 
-Sigui quin sigui el complement emprat i el format d'exportació del gràfic (.png vs .svg), el més recomanable en tots els casos és editar les imatges amb un programa d'edició a l'estil de GIMP o Inkscape per tal d'eliminar el *background* (color de fons) blanc dels gràfics. A continuació, havent creat un nou layout, tots aquests gràfics es poden incloure en forma de nova imatge (*Add picture*), indicant en cada cas si es tracta d'una imatge raster (.png) o vectorial (.svg). Per tal de mantenir la legibilitat del gràfic en redimensionar-lo, i ajustar-lo a la mida del mapa, és recomanable desar els gràfics dels complements en format vectorial (.svg).
+Sigui quin sigui el complement emprat i el format d'exportació del gràfic (.png vs .svg), el més recomanable en tots els casos és editar les imatges amb un programa d'edició a l'estil de GIMP o Inkscape per tal d'eliminar el *background* (color de fons) blanc dels gràfics. A continuació, havent creat un nou layout, tots aquests gràfics es poden incloure en forma de nova imatge (*Add picture*), indicant en cada cas si es tracta d'una imatge raster (.png) o vectorial (.svg). Per tal de mantenir la llegibilitat del gràfic en redimensionar-lo, i ajustar-lo a la mida del mapa, és recomanable desar els gràfics dels complements en format vectorial (.svg).
 
 ![image](/imatges/p9.png)
+
+
+## 3. Utilitzar l'eina Elevation Profile de la finestra de *layout*
+
+A banda de poder calcular i obtenir perfils topogràfics amb algun dels molts complements que ofereixen aquesta opció a QGIS, des de la finestra de disseny i composició de mapes de QGIS (*layout*), també es poden crear perfils topogràfics, i afegir-los directament a qualsevol composició. A continuació es mostra el flux de treball bàsic per obtenir un perfil topogràfic des de la pàgina de *layout*.
+
+* En primer lloc, al panell de capes de QGIS, cal accedir a les propietats del model digital d'elevacions, i activar l'apartat **Elevation**. Dins de l'apartat *Configuration*, s'ha d'obrir el desplegable on hi mostra el valor **Disabled**, i canviar-lo per **Represents Elevation Surface**. Dins l'apartat *Profile Chart Appearance*, cal indicar si el perfil topogràfic es voldrà representar mitjançant una línia sola, o una línia amb farcit. I en aquest darrer cas, si el farciment es vol aplicar per damunt o per sota de la línia de perfil.
+* Dins de *Style*, escollir l'opció **Fill below** i, a continuació, escollir un estil de polígon.
+* A continuació, cal obrir o accedir a la finestra de *layout* i activar l'eina **Add Elevation Profile**.
+
+![image](/imatges/p10.gif)
+
+* Abans de crear pròpiament el perfil, és necessari preparar el llenç que l'ha de contenir. És per això que havent seleccionat l'objecte del perfil, a la pestanya de les seves propietats (*Item Properties*), cal modificar els valors relatius als límits del gràfic. Dins de l'apartat **Chart Ranges**, tenint en compte la cota mínima i màxima del model d'elevacions, així com la llargada de la línia que es vol utilitzar per a generar el perfil topogràfic, cal ajustar els següents valors:
+
+![image](/imatges/p11.gif)
+
+* A continuació, a l'apartat **Distance Axis** cal configurar les unitats de la distància (que estan en relació als valors indicats en el pas anterior: 20.000 si són metres, o 20 si són quilòmetres) i definir a quin interval es volen situar les marques de divisió d'ambdós eixos, al gràfic:
+
+![image](/imatges/p12.gif)
+
+* El següent pas consistirà en configurar les divisions i l'etiquetatge de l'eix de les Y, o dels valors d'elevació:
+
+![image](/imatges/p13.gif)
+
+* A continuació, cal activar la pestanya **Atlas** i, activar la casella **Generate an atlas**. Finalment, dins de l'apartat de configuració, cal indicar per al paràmetre *Coverage layer*, la capa que indica el traçat del perfil: capa vectorial del recorregut.
+![image](/imatges/p14.gif)
+
+* Per acabar, a la barre d'eines de les funcions d'atles, cal fer un clic sobre la icona **Preview Atlas**. A continuació, dins de les propietats del gràfic, cal activar o marcar la casella **Controled by atlas** i, finalment, marcar la casella del model digital d'elevacions, dins de l'apartat *Layers*.
+
+![image](/imatges/p15.gif)
+
+* Com a tasca final, ja només quedarà ajustar novament tots els detalls que siguin necessaris per configurar el *layout* final.  
+
+![image](/imatges/p16.png)
